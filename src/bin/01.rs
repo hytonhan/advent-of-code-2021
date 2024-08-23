@@ -3,6 +3,15 @@ advent_of_code::solution!(1);
 
 pub fn part_one(input: &str) -> Option<u32> {
 
+    // let depths: Vec<u32> = input
+    //     .lines()
+    //     .map(|f| f.parse().unwrap() )
+    //     .collect();
+
+    // let depth_increased_count = depths
+    //     .windows(2)
+    //     .filter(|item| item[1] > item[0])
+    //     .count();
     let lines = input.lines();
     let mut previous_depth: u32 = 0;
     let mut depth_increased_count: u32 = 0;
@@ -18,23 +27,30 @@ pub fn part_one(input: &str) -> Option<u32> {
         }
         previous_depth = current_depth;
     }
-    Some(depth_increased_count)
+    Some(depth_increased_count as u32)
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
-    let numbers: Vec<usize>;
-    numbers.windows(size)
-    let lines = input.lines();
-    let mut depth_increased_count: u32 = 0;
-    for i in 0..lines.count() - 3 {
-        let first = input.lines().nth(i).unwrap().parse::<u32>().unwrap();
-        let second = input.lines().nth(i+3).unwrap().parse::<u32>().unwrap();
+    let depths: Vec<u32> = input
+        .lines()
+        .map(|f| f.parse().unwrap() )
+        .collect();
 
-        if second > first {
-            depth_increased_count +=1;
-        }
-    }
-    Some(depth_increased_count)
+    let depth_increased_count = depths
+        .windows(4)
+        .filter(|item| item[1] > item[0])
+        .count();
+    // let lines = input.lines();
+    // let mut depth_increased_count: u32 = 0;
+    // for i in 0..lines.count() - 3 {
+    //     let first = input.lines().nth(i).unwrap().parse::<u32>().unwrap();
+    //     let second = input.lines().nth(i+3).unwrap().parse::<u32>().unwrap();
+
+    //     if second > first {
+    //         depth_increased_count +=1;
+    //     }
+    // }
+    Some(depth_increased_count as u32)
 }
 
 #[cfg(test)]
