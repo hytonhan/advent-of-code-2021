@@ -1,4 +1,4 @@
-use std::{borrow::Borrow, collections::HashMap, hash::Hash};
+use std::{collections::HashMap, hash::Hash};
 
 advent_of_code::solution!(5);
 
@@ -56,14 +56,6 @@ impl Line {
     }
 }
 
-// impl fmt::Debug for Line {
-//     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-//         f.debug_struct("Line")
-//             .field("start", String::from("(" + &self.start.x + ", " + &self.start.y + ")"))
-//             .field("end", String::from("(" + &self.end.x + ", " + &self.end.y + ")"))
-//             .finish()
-//     }
-// }
 
 pub fn part_one(input: &str) -> Option<u32> {
     let lines: Vec<Line> = input
@@ -83,7 +75,7 @@ pub fn part_one(input: &str) -> Option<u32> {
                 start: start,
                 end: end,
             };
-            if (line.is_straight()) {
+            if line.is_straight() {
                 return Some(line);
             }
             None
